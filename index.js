@@ -1,7 +1,7 @@
-import express from ("express");
-import dotenv from ("dotenv");
-import axios from ("axios");
-import cors from ("cors");
+import express from "express";
+import dotenv from "dotenv";
+import axios from "axios";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
@@ -79,20 +79,15 @@ app.post("/bfhl", async (req, res) => {
 
     if (key === "fibonacci") {
       data = fibonacci(value);
-    } 
-    else if (key === "prime") {
+    } else if (key === "prime") {
       data = value.filter(isPrime);
-    } 
-    else if (key === "lcm") {
+    } else if (key === "lcm") {
       data = lcmArray(value);
-    } 
-    else if (key === "hcf") {
+    } else if (key === "hcf") {
       data = hcfArray(value);
-    } 
-    else if (key === "AI") {
+    } else if (key === "AI") {
       data = await aiResponse(value);
-    } 
-    else {
+    } else {
       return res.status(400).json({
         is_success: false,
         official_email: OFFICIAL_EMAIL,
@@ -115,6 +110,7 @@ app.post("/bfhl", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
